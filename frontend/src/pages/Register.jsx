@@ -7,7 +7,6 @@ function Register() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("student");
 
   const handleSubmit = (e) => {
@@ -62,19 +61,7 @@ function Register() {
                 />
               </div>
 
-              {/* Phone Number */}
-              <div>
-                <label className="block text-gray-700 font-medium">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  placeholder="Enter your phone number"
-                  className="w-full mt-1 p-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-              </div>
+              
 
               {/* Password */}
               <div>

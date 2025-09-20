@@ -4,7 +4,7 @@ import logoImage from "../assets/vsSih logo.jpg";
 import { Menu, X } from "lucide-react";
 
 function Navbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div>
@@ -37,13 +37,13 @@ function Navbar() {
                 Features
               </a>
               <a
-                href="#about"
+                href="/about"
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
                 About
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
                 Contact
@@ -88,13 +88,13 @@ function Navbar() {
                   Features
                 </a>
                 <a
-                  href="#about"
+                  href="/about"
                   className="block px-3 py-2 text-gray-700 hover:text-blue-600"
                 >
                   About
                 </a>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="block px-3 py-2 text-gray-700 hover:text-blue-600"
                 >
                   Contact

@@ -4,6 +4,10 @@ import './App.css'
 import Home from './components/Home'
 import Register from './pages/Register';
 import Login from './pages/Login';
+import StudentDashboard from './pages/StudentDashboard';
+import TeacherDashboard from './pages/TeacherDashboard';
+import About from './components/About';
+import Contact from './components/Contact';
 
 function App() {
   
@@ -14,6 +18,10 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/studentDashboard' element={<StudentDashboard />} />
+        <Route path='/teacherDashboard' element={<TeacherDashboard />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
       </Routes>
       <Toaster />
     </div>

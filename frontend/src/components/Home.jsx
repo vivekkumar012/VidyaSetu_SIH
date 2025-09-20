@@ -49,13 +49,13 @@ export default function Home() {
                 Features
               </a>
               <a
-                href="#about"
+                href="/about"
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
                 About
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
                 Contact
@@ -100,13 +100,13 @@ export default function Home() {
                   Features
                 </a>
                 <a
-                  href="#about"
+                  href="/about"
                   className="block px-3 py-2 text-gray-700 hover:text-blue-600"
                 >
                   About
                 </a>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="block px-3 py-2 text-gray-700 hover:text-blue-600"
                 >
                   Contact
@@ -332,7 +332,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#about"
+                    href="/about"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     About
@@ -340,7 +340,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     Contact
@@ -362,7 +362,7 @@ export default function Home() {
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
             <p className="text-gray-400">
-              Smart India Hackathon 2025 | Driving Digital Equity in Education
+              <span className="text-blue-600">Smart India Hackathon 2025 </span> | Driving Digital Equity in Education
             </p>
           </div>
         </div>
