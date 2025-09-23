@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import frameImg from "../assets/frame.png";
 import image from "../assets/signup.webp";
 import Navbar from "../components/Navbar";
@@ -7,9 +9,39 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+        role,
+      });
+
+      if (res.status === 200) {
+        alert("✅ Login successful!");
+
+        // Save token (optional for protected routes later)
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("role", res.data.user.role);
+
+        // Redirect based on role
+        if (res.data.user.role === "student") {
+          navigate("/studentdashboard");
+        } else if (res.data.user.role === "teacher") {
+          navigate("/teacherdashboard");
+        }
+      }
+    } catch (err) {
+      if (err.response) {
+        alert("❌ " + err.response.data.message);
+      } else {
+        alert("❌ Something went wrong!");
+      }
+    }
   };
 
   return (
@@ -20,8 +52,7 @@ function Login() {
           {/* Left Form Section */}
           <div className="mx-auto w-11/12 max-w-[450px] md:mx-0 bg-white rounded-2xl shadow-lg p-8">
             <h1 className="text-3xl font-bold text-gray-800">
-              Join the millions learning to code with{" "}
-              <span className="text-blue-600">VidyaSetu</span>
+              Login to <span className="text-blue-600">VidyaSetu</span>
             </h1>
             <p className="mt-2 text-gray-600 text-lg">
               Build skills for today, tomorrow, and beyond.
@@ -32,8 +63,6 @@ function Login() {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-5">
-              
-
               {/* Email */}
               <div>
                 <label className="block text-gray-700 font-medium">Email</label>
@@ -47,12 +76,9 @@ function Login() {
                 />
               </div>
 
-              
               {/* Password */}
               <div>
-                <label className="block text-gray-700 font-medium">
-                  Password
-                </label>
+                <label className="block text-gray-700 font-medium">Password</label>
                 <input
                   type="password"
                   value={password}
@@ -84,8 +110,9 @@ function Login() {
                 Login
               </button>
             </form>
+
             <span className="block text-center mt-4 text-gray-600">
-              Already have an account?{" "}
+              Don’t have an account?{" "}
               <a
                 href="/register"
                 className="text-blue-500 font-semibold hover:underline"

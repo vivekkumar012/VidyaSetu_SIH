@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import axios from "axios";
 import frameImg from "../assets/frame.png";
 import image from "../assets/signup.webp";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [username, setUserName] = useState("");
@@ -9,8 +11,31 @@ function Register() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const userData = { username, email, password, role };
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/register", userData);
+
+      if (res.status === 201) {
+        alert("✅ Registration successful!");
+        setUserName("");
+        setEmail("");
+        setPassword("");
+        setRole("student");
+        navigate("/login");
+      }
+    } catch (err) {
+      if (err.response) {
+        alert("❌ " + err.response.data.message);
+      } else {
+        alert("❌ Something went wrong!");
+      }
+    }
   };
 
   return (
@@ -35,9 +60,7 @@ function Register() {
             <form onSubmit={handleSubmit} className="mt-6 space-y-5">
               {/* Username */}
               <div>
-                <label className="block text-gray-700 font-medium">
-                  Username
-                </label>
+                <label className="block text-gray-700 font-medium">Username</label>
                 <input
                   type="text"
                   value={username}
@@ -61,13 +84,9 @@ function Register() {
                 />
               </div>
 
-              
-
               {/* Password */}
               <div>
-                <label className="block text-gray-700 font-medium">
-                  Password
-                </label>
+                <label className="block text-gray-700 font-medium">Password</label>
                 <input
                   type="password"
                   value={password}
@@ -99,12 +118,10 @@ function Register() {
                 Sign Up
               </button>
             </form>
+
             <span className="block text-center mt-4 text-gray-600">
               Already have an account?{" "}
-              <a
-                href="/login"
-                className="text-blue-500 font-semibold hover:underline"
-              >
+              <a href="/login" className="text-blue-500 font-semibold hover:underline">
                 Login
               </a>
             </span>
