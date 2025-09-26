@@ -124,7 +124,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 pb-32">
+      <section
+        id="home"
+        className="pt-20 pb-32 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/88/An_aerial_view_of_Udaipur_and_Aravali_hills_Rajasthan_India_2012.jpg')] bg-cover bg-center relative"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -134,7 +137,7 @@ export default function Home() {
                 Digital Education{" "}
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-black mb-8 max-w-3xl mx-auto leading-relaxed">
               VidyaSetu is a next-generation platform that bridges the learning
               gap by delivering high-quality lectures, even in villages with
               limited internet access and basic devices.
@@ -147,7 +150,7 @@ export default function Home() {
                 <Play className="h-5 w-5" />
                 Start Learning
               </Link>
-              <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center gap-2">
+              <button className="border-2 border-green-600 text-green-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center gap-2">
                 Explore Demo
                 <ArrowRight className="h-5 w-5" />
               </button>
@@ -362,7 +365,8 @@ export default function Home() {
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
             <p className="text-gray-400">
-              <span className="text-blue-600">Smart India Hackathon 2025 </span> | Driving Digital Equity in Education
+              <span className="text-blue-600">Smart India Hackathon 2025 </span>{" "}
+              | Driving Digital Equity in Education
             </p>
           </div>
         </div>
