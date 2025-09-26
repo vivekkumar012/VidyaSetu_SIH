@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Search, Globe, User, Users, FileText, BarChart3, Calendar, Settings, Plus, Mail, Home, Menu, X, Bell, LogOut, ChevronDown, ChevronLeft, ChevronRight, Award, TrendingUp, Clock, BookOpen, Video, Edit, Download, Star, Filter, MoreHorizontal, GraduationCap, Target, CheckCircle } from 'lucide-react';
 import logo from '../assets/logo.png'
 
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 export default function TeacherDashboard() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    toast.success("Logout Successfully");
+    navigate("/");
+  };
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [teacher, setTeacher] = useState({
@@ -114,7 +122,7 @@ export default function TeacherDashboard() {
                   <div className="text-xs text-white/60">{teacher.role}</div>
                 </div>
                 <button className="text-white/60 hover:text-white">
-                  <LogOut className="w-4 h-4" />
+                  <LogOut onClick={handleLogout} className="w-4 h-4" />
                 </button>
               </div>
               <div className="flex items-center justify-between text-xs text-white/60">
