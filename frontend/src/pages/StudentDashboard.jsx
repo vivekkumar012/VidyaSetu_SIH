@@ -160,6 +160,13 @@ export default function StudentDashboard() {
     }
   };
 
+  // Live Classroom: Join flow for students
+  const handleJoinLiveClass = () => {
+    const roomId = window.prompt("Enter classroom code (ask your teacher)", "class-12345");
+    if (!roomId) return;
+    navigate(`/classroom/${roomId}?role=student`);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* Animated Background */}
@@ -507,6 +514,11 @@ export default function StudentDashboard() {
                           <button
                             key={i}
                             className="w-full flex items-center space-x-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-200 group"
+                            onClick={() => {
+                              if (action.label === "Join Live Class") {
+                                handleJoinLiveClass();
+                              }
+                            }}
                           >
                             <div
                               className={`w-8 h-8 rounded-lg ${action.color} flex items-center justify-center`}

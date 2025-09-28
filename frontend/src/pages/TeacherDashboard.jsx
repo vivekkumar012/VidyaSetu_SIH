@@ -43,6 +43,12 @@ export default function TeacherDashboard() {
     toast.success("Logout Successfully");
     navigate("/");
   };
+  // Live Classroom: Start flow for teacher
+  const genRoomCode = () => `CLASS-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+  const handleStartLiveClass = () => {
+    const roomId = genRoomCode();
+    navigate(`/classroom/${roomId}?role=teacher`);
+  };
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("dashboard");
   const [teacher, setTeacher] = useState({
@@ -306,9 +312,14 @@ export default function TeacherDashboard() {
                       <p className="text-white/80">
                         Please add questions and submit them for review.
                       </p>
-                      <button className="mt-6 bg-white/20 hover:bg-white/30 px-6 py-3 rounded-xl backdrop-blur-sm transition-all duration-200">
-                        Review Assessments
-                      </button>
+                      <div className="mt-6 flex gap-3 flex-wrap">
+                        <button className="bg-white/20 hover:bg-white/30 px-6 py-3 rounded-xl backdrop-blur-sm transition-all duration-200">
+                          Review Assessments
+                        </button>
+                        <button onClick={handleStartLiveClass} className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-xl transition-all duration-200">
+                          Start Live Class
+                        </button>
+                      </div>
                     </div>
                     <div className="absolute right-8 top-8 flex space-x-2 opacity-30">
                       {[...Array(6)].map((_, i) => (
